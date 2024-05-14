@@ -20,22 +20,32 @@ connection.once("open", async () => {
 
   const thoughts = await Thought.insertMany([
     {
-      thoughtText: "hii",
+      thoughtText: "Going to a concert next week!",
       userName: "Rylee",
       reactions: [
         {
-          reactionBody: "uhhh",
+          reactionBody: "yippee",
           userName: "Rylee",
         },
       ],
     },
     {
-      thoughtText: "idk",
+      thoughtText: "Hallooo",
       userName: "Zeno",
       reactions: [
         {
-          reactionBody: "okay",
+          reactionBody: ":)",
           userName: "Zeno",
+        },
+      ],
+    },
+    {
+      thoughtText: "Of cooourse!",
+      userName: "Soobin",
+      reactions: [
+        {
+          reactionBody: "*silence*",
+          userName: "Soobin",
         },
       ],
     },
@@ -45,6 +55,18 @@ connection.once("open", async () => {
     {
       username: "Rylee",
       email: "rylee@gmail.com",
+      thoughts: [thoughts[0]._id, thoughts[1]._id],
+      friends: [  ],
+    },
+    {
+      username: "Zeno",
+      email: "zeno@gmail.com",
+      thoughts: [thoughts[0]._id, thoughts[1]._id],
+      friends: [  ],
+    },
+    {
+      username: "Soobin",
+      email: "soobiedoobie@gmail.com",
       thoughts: [thoughts[0]._id, thoughts[1]._id],
       friends: [  ],
     },
