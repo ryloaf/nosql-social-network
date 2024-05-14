@@ -4,10 +4,11 @@ const { User, Thought } = require("../models");
 connection.on("error", (err) => err);
 
 connection.once("open", async () => {
-  let usercheck = await connection.db
+
+  let userCheck = await connection.db
     .listCollections({ name: "users" })
     .toArray();
-  if (usercheck.length) {
+  if (userCheck.length) {
     await connection.dropCollection("users");
   }
 
@@ -24,8 +25,8 @@ connection.once("open", async () => {
       userName: "Rylee",
       reactions: [
         {
-          reactionBody: "yippee",
-          userName: "Rylee",
+          reactionBody: "See you there!",
+          userName: "Soobin",
         },
       ],
     },
@@ -34,8 +35,8 @@ connection.once("open", async () => {
       userName: "Zeno",
       reactions: [
         {
-          reactionBody: ":)",
-          userName: "Zeno",
+          reactionBody: "Hiiii",
+          userName: "Rylee",
         },
       ],
     },
@@ -45,7 +46,7 @@ connection.once("open", async () => {
       reactions: [
         {
           reactionBody: "*silence*",
-          userName: "Soobin",
+          userName: "Zeno",
         },
       ],
     },
@@ -56,19 +57,19 @@ connection.once("open", async () => {
       username: "Rylee",
       email: "rylee@gmail.com",
       thoughts: [thoughts[0]._id, thoughts[1]._id],
-      friends: [  ],
+      friends: [],
     },
     {
       username: "Zeno",
       email: "zeno@gmail.com",
-      thoughts: [thoughts[0]._id, thoughts[1]._id],
-      friends: [  ],
+      thoughts: [thoughts[2]._id],
+      friends: [],
     },
     {
       username: "Soobin",
       email: "soobiedoobie@gmail.com",
-      thoughts: [thoughts[0]._id, thoughts[1]._id],
-      friends: [  ],
+      thoughts: [],
+      friends: [],
     },
   ]);
 });
