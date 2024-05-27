@@ -1,4 +1,4 @@
-const { Thought, Reaction } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
   // Get all users
@@ -6,7 +6,7 @@ module.exports = {
     try {
       const users = await Thought.find()
       // .populate('users');
-      res.json(users);
+      return res.json(users);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -16,7 +16,7 @@ module.exports = {
     try {
       const user = await Thought.findOne({ _id: req.params.id });
       if (!user) {
-        return res.status(404).json({ message: 'No such user with that ID' });
+        return res.status(404).json({ message: 'No such user with that ID!' });
       }
        res.json({ user });
     } catch (err) {
@@ -41,8 +41,8 @@ module.exports = {
         return res.status(404).json({ message: 'No thoughts head empty!' });
       }
 
-      res.json({ message: 'User deleted successfully :(' });
-    } catch(err) {
+      res.json({ message: 'User deleted successfully.' });
+    } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }

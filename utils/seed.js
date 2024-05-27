@@ -55,7 +55,7 @@ connection.once("open", async () => {
   const user = await User.insertMany([
     {
       username: "Rylee",
-      email: "rylee@gmail.com",
+      email: "rylee@email.com",
       thoughts: [thoughts[0]._id, thoughts[1]._id],
       friends: [],
     },
@@ -67,7 +67,7 @@ connection.once("open", async () => {
     },
     {
       username: "Soobin",
-      email: "soobiedoobie@gmail.com",
+      email: "soobiedoobie@email.com",
       thoughts: [],
       friends: [],
     },

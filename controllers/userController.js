@@ -6,7 +6,7 @@ const { User, Thought } = require('../models');
 module.exports = {
   async getUser(req, res) {
     try {
-      const users =await User.find()
+      const users = await User.find().populate('thoughts');
       return res.json(users);
     } catch (err) {
       console.log(err);
@@ -41,7 +41,7 @@ module.exports = {
   // delete user and their thoughts
   async deleteUser(req, res) {
     try {
-      const user = await User.findONeAndRemove({ _id: req.params.id });
+      const user = await User.findOneAndRemove({ _id: req.params.id });
 
       if (!user) {
         return res.status(404).json({ message: 'No such user exists' })
@@ -58,7 +58,7 @@ module.exports = {
         });
       }
 
-      res.json({ message: 'User successfully deleted' });
+      res.json({ message: 'User successfully deleted!' });
     } catch (err) {
       console.log(err);
       res.staus(500).json(err);
@@ -79,11 +79,16 @@ module.exports = {
       );
 
       if (!user) {
-        return res.status(404).json({ message: 'No user with that ID' });
+        return res.status(404).json({ message: 'No user found with that ID!' });
       }
     } catch(err) {
       console.log(err);
       res.status(500).json(err);
     }
-  }
+  },
+  async addFriend(req, res) {
+    const thought = await User.findOneAndUpdate();
+  },
+  async deleteFriend(req, res) {
+  },
 };

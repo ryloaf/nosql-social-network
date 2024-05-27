@@ -1,4 +1,5 @@
 const { Schema, Types } = require('mongoose');
+
 // Schema to create Reaction model: reactionId, reactionBody, username, createdAt
 const reactionSchema = new Schema(
   {
@@ -9,7 +10,7 @@ const reactionSchema = new Schema(
     reactionBody: {
       type: String,
       required: true,
-      max_length: 200,
+      max_length: 280,
     },
     userName: {
       type: String,
@@ -18,14 +19,13 @@ const reactionSchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
-        // get: format,
     },
   },
   {
     toJSON: {
       getters: true,
     },
-    id: false
+    id: false,
   }
 );
 
